@@ -5,20 +5,26 @@ import {ReactComponent as Star1} from './Pentagram.svg';
 function Seq() {  
 
   const synth = new Tone.Synth();
-  const gain = new Tone.Gain(.5);  
-  const filter = new Tone.Filter(7500, 'lowpass', -24).toDestination();
+  const gain = new Tone.Gain(.1);  
+  const filter = new Tone.Filter(7500, 'lowpass', -24)
   const delay = new Tone.FeedbackDelay(.5, .5);  
   const dist = new Tone.Distortion(0);
   const notes = ["D3","F3","A3","C4","D4","E4","G4","A4"];    
   let index = 0;    
+  var vol = new Tone.Volume(-12).toDestination();
+  
 
   delay.wet.value = 0;
   delay.gain = 1;
-  synth.connect(dist);
   synth.oscillator.type = "square";
-  synth.connect(filter);  
-  synth.gain = gain;
-  synth.gain.chain(dist, filter, delay, Tone.Destination);
+
+  // synth.connect(dist);
+  // synth.connect(filter);  
+  // synth.connect(gain);
+  synth.connect(vol)
+  // synth.chain(vol, Tone.Destination)
+  // synth.chain(dist, filter, delay, Tone.Destination);
+
   Tone.Transport.scheduleRepeat(repeat, '8n');
   Tone.Transport.bpm.value = 90  
   
@@ -80,6 +86,11 @@ function Seq() {
   }  
 
   window.onload = function() {
+
+    var volumeSlide = document.getElementById('volume');
+    volumeSlide.addEventListener("change", function() {     
+      vol.volume.value = this.value-35;     
+    });
 
     var filterSlide = document.getElementById('filter');
     filterSlide.addEventListener("change", function() {     
@@ -151,6 +162,7 @@ function Seq() {
         </div>
         <div className="col-md-6">
           <div className="container controlBox">
+            <p>VOLUME<input type="range" min="0" max="35" defaultValue="10" className="slider" id="volume"/></p>
             <p>FILTER<input type="range" min="0" max="100" defaultValue="75" className="slider" id="filter"/></p>   
             <p>RELEASE<input type="range" min="0" max="30" defaultValue="5" className="slider" id="release"/></p> 
             <p>DISTORTION<input type="range" min="0" max="30" defaultValue="0" className="slider" id="distortion"/></p>
