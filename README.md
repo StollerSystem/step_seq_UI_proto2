@@ -1,6 +1,8 @@
 # S T 3 P // S 3 Q // PROTOTYPE II
 
-## Geometric Step Sequencer/Synthesizer - Capstone Project
+## Geometric Step Sequencer/Synthesizer - Capstone Project 
+
+check it out: https://stollersystem.github.io/step_seq_UI_proto2/
 
 ### Description:
 A website that displays various geometric shapes and includes controls to create and manipulate sound. At its core it will be a recreation of a late 70’s era step sequencer and synthesizer which combined together they create a platform to generate dreamy, minimal electronic music. 
