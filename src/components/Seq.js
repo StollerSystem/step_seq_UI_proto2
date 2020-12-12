@@ -1,38 +1,44 @@
 import React from 'react';
 import * as Tone from 'tone';
-import {ReactComponent as Star1} from './Pentagram.svg';
+import TriSvg from './TriSvg'
+
 
 function Seq() {  
 
-  const synth = new Tone.Synth();
-  const gain = new Tone.Gain(.1);  
+  const synth = new Tone.Synth();  
   const filter = new Tone.Filter(7500, 'lowpass', -24)
   const delay = new Tone.FeedbackDelay(.5, .5);  
   const dist = new Tone.Distortion(0);
   const notes = ["D3","F3","A3","C4","D4","E4","G4","A4"];    
   let index = 0;    
-  var vol = new Tone.Volume(-12).toDestination();
-  
+  var vol = new Tone.Volume(-12).toDestination();  
 
   delay.wet.value = 0;
   delay.gain = 1;
-  synth.oscillator.type = "square";
-
-  // synth.connect(dist);
-  // synth.connect(filter);  
-  // synth.connect(gain);
-  synth.connect(vol)
-  // synth.chain(vol, Tone.Destination)
-  // synth.chain(dist, filter, delay, Tone.Destination);
-
+  synth.oscillator.type = "square";  
+  synth.chain(dist,filter,delay,vol)
   Tone.Transport.scheduleRepeat(repeat, '8n');
   Tone.Transport.bpm.value = 90  
   
 
-  function repeat(time) {    
-    pentFlash(false);
+  function repeat(time) { 
+
     const row1 = document.getElementById('row1');
     let stepCount = index % 8;    
+
+    Tone.Draw.schedule(function(){
+      stepVisual(stepCount,row1);
+      svgVisual(stepCount);      
+    }, time)
+    
+    // Tone.Transport.schedule(function(time){
+    //   //use the time argument to schedule a callback with Tone.Draw
+    //   Tone.Draw.schedule(function(){
+    //     //do drawing or DOM manipulation here
+    //     console.log("draw")
+    //   }, time)
+    // }, "+0.5")
+    
     let input = row1.querySelector(`div:nth-child(${stepCount+1}) input[id=c${stepCount+1}]`);
     var stepSliders = [
       document.getElementById("step1"),
@@ -46,11 +52,11 @@ function Seq() {
     ];    
     
     if (input.checked) {
-      pentFlash(true);
-      synth.triggerAttackRelease(notes[parseInt(stepSliders[stepCount].value)-1], '32n',time);      
+      
+      synth.triggerAttackRelease(notes[parseInt(stepSliders[stepCount].value)-1], '64n',time);      
     } 
     index++;
-    stepVisual(stepCount,row1);
+    // stepVisual(stepCount,row1);
   }
 
 
@@ -66,14 +72,24 @@ function Seq() {
     divActive.className = 'stepBox active';    
   }
 
-  function pentFlash(bool) {
-    let pent = document.getElementById('pent');
-    if (bool) {
-      pent.setAttribute("fill", '#6aff00');
-    } else {
-      pent.setAttribute("fill", 'black');
-    }
+
+  let triColor1 ="gray";
+
+  function svgVisual(stepCount) {
+    let sideNum = stepCount%3+1;
+    let side = document.getElementById(`side${sideNum}`)
+    side.setAttribute("fill", "#00d848")
+    console.log(side)
+    setTimeout(function() {
+      side.setAttribute("fill", triColor1)
+    }, 50);
+    // triColor1 = "blue";
+    // console.log(side)
   }
+
+  
+
+  
 
 
   function startSeq() {    
@@ -84,6 +100,9 @@ function Seq() {
   function stopSeq() {    
     Tone.Transport.stop();
   }  
+
+
+  
 
   window.onload = function() {
 
@@ -119,7 +138,8 @@ function Seq() {
   return (
     <React.Fragment>
       <div className="row">
-        <div className="col-md-6">
+
+        <div className="col-md-4">
           <div className="container mainBox">
             <h4>S T 3 P // S 3 Q 1</h4>      
             <div id="row1">
@@ -160,18 +180,22 @@ function Seq() {
             <button className="btn btn-danger" onClick={stopSeq}>stop</button>
           </div>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-4 middle">
+          <TriSvg
+          triColor1={triColor1}
+          />
+        </div>
+
+        <div className="col-md-4">
           <div className="container controlBox">
             <p>VOLUME<input type="range" min="0" max="35" defaultValue="10" className="slider" id="volume"/></p>
             <p>FILTER<input type="range" min="0" max="100" defaultValue="75" className="slider" id="filter"/></p>   
             <p>RELEASE<input type="range" min="0" max="30" defaultValue="5" className="slider" id="release"/></p> 
             <p>DISTORTION<input type="range" min="0" max="30" defaultValue="0" className="slider" id="distortion"/></p>
             <p>DELAY<input type="range" min="0" max="10" defaultValue="0" className="slider" id="delay"/></p>            
-          </div>
-          <div className="star">        
-            <Star1 id="pent" fill="black"/>       
-          </div>          
+          </div>                   
         </div>
+
       </div>
       <div className="row container">
         

@@ -1,12 +1,12 @@
 body {
   background-color: black;
-  color: rgb(0, 238, 0);
+  color: #00d848;
   font-family: 'Press Start 2P', cursive;
   font-size: 10px;
 }
 
 .stepBox {
-  border: solid rgb(0, 238, 0);
+  border: solid #00d848;
   border-width: 1px;
   padding: 10px;
 
@@ -17,8 +17,8 @@ body {
   margin-top: 20px;
   width: 275px;
   /* color: #1eff00; */
-  border: solid rgb(0, 238, 0);
-  box-shadow: 0px 0px 4px 4px rgb(0, 238, 0);
+  border: solid #00d848;
+  box-shadow: 0px 0px 4px 4px #00d848;
   border-width: 1px;
   padding: 10px;
   
@@ -47,8 +47,8 @@ input {
   float: left;
   margin-top: 20px;
   width: 275px;  
-  border: solid rgb(0, 238, 0);
-  box-shadow: 0px 0px 4px 4px rgb(0, 238, 0);
+  border: solid #00d848;
+  box-shadow: 0px 0px 4px 4px #00d848;
   border-width: 1px;
   padding: 10px;
   height: auto;
@@ -57,4 +57,13 @@ input {
 .star {
   text-align: center;
   float: left;
+}
+
+.side:hover {
+  fill: #94d8ab;
+}
+
+.middle {  
+  margin: auto;
+  width: 50%;    
 }

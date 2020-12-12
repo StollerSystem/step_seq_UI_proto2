@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Seq from './Seq';
+import Seq from './components/Seq';
 import './index.css';
 
 
