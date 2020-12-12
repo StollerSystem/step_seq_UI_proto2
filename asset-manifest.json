@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/step_seq_UI_proto2/static/css/main.96b79ba8.chunk.css",
+    "main.js": "/step_seq_UI_proto2/static/js/main.4063b8f8.chunk.js",
+    "main.js.map": "/step_seq_UI_proto2/static/js/main.4063b8f8.chunk.js.map",
+    "runtime-main.js": "/step_seq_UI_proto2/static/js/runtime-main.2787c293.js",
+    "runtime-main.js.map": "/step_seq_UI_proto2/static/js/runtime-main.2787c293.js.map",
+    "static/js/2.6d80f51a.chunk.js": "/step_seq_UI_proto2/static/js/2.6d80f51a.chunk.js",
+    "static/js/2.6d80f51a.chunk.js.map": "/step_seq_UI_proto2/static/js/2.6d80f51a.chunk.js.map",
+    "index.html": "/step_seq_UI_proto2/index.html",
+    "static/css/main.96b79ba8.chunk.css.map": "/step_seq_UI_proto2/static/css/main.96b79ba8.chunk.css.map",
+    "static/js/2.6d80f51a.chunk.js.LICENSE.txt": "/step_seq_UI_proto2/static/js/2.6d80f51a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2787c293.js",
+    "static/js/2.6d80f51a.chunk.js",
+    "static/css/main.96b79ba8.chunk.css",
+    "static/js/main.4063b8f8.chunk.js"
+  ]
+}
