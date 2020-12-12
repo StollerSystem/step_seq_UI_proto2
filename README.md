@@ -21,16 +21,18 @@ As the sequencer runs it will animate geometric shapes.
 Visual Studio Code
 Node.js
 React
-Redux (might not be necessary) 
 JavaScript
 Web Audio API
 Tone.js
 SVG
+Inkscape
 
 ### Additional Features:
 Ability to create a profile and log in
 Hosted with a database so users can save their scenes. 
 Mobile Support 
+Change sequencer direction
+Toggle between different sequences 
 Once you create a scene (song) you can save your settings and name it and recall it later. 
 Add more controls to manipulate sounds.
 Add more options to each step in the sequencer, such as gate or skip. 
@@ -42,7 +44,3 @@ Add more visuals using Three.js
 React Native? Probably not... 
 Database (not sure what kind yet)
 Three.js
-
-
-
-

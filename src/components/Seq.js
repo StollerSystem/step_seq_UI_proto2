@@ -188,7 +188,7 @@ function Seq() {
 
         <div className="col-md-4">
           <div className="container controlBox">
-            <p>VOLUME<input type="range" min="0" max="35" defaultValue="10" className="slider" id="volume"/></p>
+            <p>VOLUME<input type="range" min="0" max="35" defaultValue="23" className="slider" id="volume"/></p>
             <p>FILTER<input type="range" min="0" max="100" defaultValue="75" className="slider" id="filter"/></p>   
             <p>RELEASE<input type="range" min="0" max="30" defaultValue="5" className="slider" id="release"/></p> 
             <p>DISTORTION<input type="range" min="0" max="30" defaultValue="0" className="slider" id="distortion"/></p>
